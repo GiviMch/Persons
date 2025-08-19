@@ -1,25 +1,33 @@
 package ru.netology.persons.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
-import ru.netology.persons.entity.PersonId;
 
 @Entity
 @Table(name = "PERSONS")
 @IdClass(PersonId.class)
 public class Person {
     @Id
+    @Column(name = "name", nullable = false)
     private String name;
+
     @Id
+    @Column(name = "surname", nullable = false)
     private String surname;
+
     @Id
+    @Column(name = "age", nullable = false)
     private int age;
+
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
+
+    @Column(name = "city_of_living")
     private String cityOfLiving;
 
-    // Конструкторы, геттеры и сеттеры
     public Person() {}
 
     public Person(String name, String surname, int age, String phoneNumber, String cityOfLiving) {
