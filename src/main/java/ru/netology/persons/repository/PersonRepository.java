@@ -6,8 +6,13 @@ import ru.netology.persons.entity.Person;
 import ru.netology.persons.entity.PersonId;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, PersonId> {
     List<Person> findByCityOfLiving(String cityOfLiving);
+
+    List<Person> findByAgeLessThanOrderByAgeAsc(int age);
+
+    Optional<Person> findByNameAndSurname(String name, String surname);
 }

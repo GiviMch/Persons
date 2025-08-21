@@ -7,6 +7,7 @@ import ru.netology.persons.entity.Person;
 import ru.netology.persons.repository.PersonRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class PersonController {
@@ -20,4 +21,17 @@ public class PersonController {
     public List<Person> getPersonsByCity(@RequestParam String city) {
         return personRepository.findByCityOfLiving(city);
     }
+
+    @GetMapping("/persons/by-age")
+    public List<Person> getPersonByAge(@RequestParam int age) {
+        return personRepository.findByAgeLessThanOrderByAgeAsc(age);
+    }
+
+    @GetMapping("/persons/by-name-surname")
+    public Optional<Person> getPersonByNameAndSurname(
+            @RequestParam String name,
+            @RequestParam String surname) {
+        return personRepository.findByNameAndSurname(name, surname);
+    }
+
 }
